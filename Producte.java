@@ -3,24 +3,24 @@ public class Producte {
   private int cantidad;
   
   public Producte(String nombre,  int cantidad) {
-        this.nom = nombre ;
+        this.nom = nombre;
         this.cantidad = cantidad;
   }
 
   public String getNom() {
-        return this.Nom;
+        return this.nom;
   }
   
-  public void setNom(String Nom) {
-        this.Nom = nombre;
+  public void setNom(String nombre) {
+        this.nom = nombre;
     }
 
   public int getCantidad() {
-        return this.Cantidad;
+        return this.cantidad;
   }
 
   public void setCantidad(int Cantidad) {
-       this.Cantidad = cantidad;
+       this.cantidad = cantidad;
   }
 }
         
