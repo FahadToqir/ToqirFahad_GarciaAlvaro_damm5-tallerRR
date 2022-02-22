@@ -8,27 +8,36 @@ public class Llista {
    public static void main(String[] args) {
    }
    
-   public static void NuevoProducto() {
+   public static void crearProducto() {
       System.out.println("Nom: ");
-      String nom = entrada.netxLine();
+      String nom = entrada.netxtLine().strip();
       if (nom.isBlank) {
-         System.out.println("Introduzca minimo una letra o numero!");
+         System.out.println("Error: Introduzca minimo una letra o numero!");
          return;
       }
-      //for(Producte a : productos) {
-         
+      for(Producte a : productos) {
+          if(p.getNom().equals(nom)) {
+            System.out.println("Error: El Producto que quiere crear ja existe!")
+            return;
+          }
+      System.out.println("Quantitat?");
+      String Qt = entrada.netxtLine().strip();
+      if (Qt.isBlank){
+         Qt = 1;
+      }
+      if (Qt < 0) {
+         System.out.println("Error: Introduzca una cantidad valida!")
+         return;
   }
 
-  public static void crearProducte() {
+
+  public static void editarProducto() {
   }
 
-  public static void editarProducte() {
-  }
-
-  public static void borrarProducte() {
+  public static void borrarProducto() {
   }
   
-  public static void MostrarProductePerCategoria() {
+  public static void MostrarProductoPorCategoria() {
   }
 }
 
