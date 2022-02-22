@@ -10,6 +10,6 @@ public class Categoria {
 		return this.nom;
 		}
 	public void setNom (String nom) {
-		this.nom = nom
+		this.nom = nom;
 		}
 	
