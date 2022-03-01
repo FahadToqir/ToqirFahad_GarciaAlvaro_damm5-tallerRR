@@ -67,7 +67,7 @@ public class Llista {
          return;
       }
       int cantidad = Integer.parseInt(Qt);
-      Producte producto = new Producte(nom, cantidad);
+      productos[] = new Producte(nom, cantidad);
       Categoria categoria1 = new Categoria(categoria);
       Menu();
   }
@@ -127,7 +127,7 @@ public class Llista {
   }
  
   public static void MostraProducto() {
-    for(int i = 0; i <= productos.length; i ++) {
+    for(int i = 0; i < productos.length - 1; i ++) {
         System.out.println(productos[i]);
     }
   }
