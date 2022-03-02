@@ -67,7 +67,7 @@ public class Llista {
          return;
       }
       int cantidad = Integer.parseInt(Qt);
-      productos[] = new Producte(nom, cantidad);
+      Producte producto = new Producte(nom,cantidad);
       Categoria categoria1 = new Categoria(categoria);
       Menu();
   }
