@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Llista {
-   private static Producte[] productos = new Producte[0];
+   private static Producte[] productos = new Producte[100];
    private static Categoria[] categorias = new Categoria[0];
    private static Scanner entr = new Scanner(System.in);
    
@@ -67,8 +67,8 @@ public class Llista {
          return;
       }
       int cantidad = Integer.parseInt(Qt);
-      Producte producto = new Producte(nom,cantidad);
-      Categoria categoria1 = new Categoria(categoria);
+      productos[0] = new Producte(nom,cantidad);
+      categorias[0] = new Categoria(categoria);
       Menu();
   }
   
