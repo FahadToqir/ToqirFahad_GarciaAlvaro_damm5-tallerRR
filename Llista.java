@@ -1,12 +1,13 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Llista {
-   private static Producte[] productos = new Producte[100];
+   private static Producte[] productos = new Producte[0];
    private static Categoria[] categorias = new Categoria[0];
    private static Scanner entr = new Scanner(System.in);
    
    public static void main(String[] args) {
-    Menu();    
+    Menu();
     MostraProducto();
    }
    public static void Menu() {
@@ -27,9 +28,9 @@ public class Llista {
         }
         if (choose.equals("4")) {
            MostraProducto();
-        }
+    }
    }
-   public static void crearProducto() {
+   private static void crearProducto() {
       System.out.println("Nombre del Producto: ");
       String nom = entr.nextLine().strip();
       if (nom.isBlank()) {
@@ -38,7 +39,7 @@ public class Llista {
       }
 
       for(Producte a : productos) {
-          if(a.getNom().equals(nom)) {
+          if(a != null && a.getNom().equals(nom)) {
             System.out.println("Error: El Producto que quiere crear ja existe!");
             return;
           }
@@ -67,8 +68,8 @@ public class Llista {
          return;
       }
       int cantidad = Integer.parseInt(Qt);
-      productos[0] = new Producte(nom,cantidad);
-      categorias[0] = new Categoria(categoria);
+      productos = Arrays.copyOf(productos, productos.length + 1);
+      productos[productos.length - 1] = new Producte(nom,cantidad);
       Menu();
   }
   
@@ -127,8 +128,11 @@ public class Llista {
   }
  
   public static void MostraProducto() {
-    for(int i = 0; i < productos.length - 1; i ++) {
-        System.out.println(productos[i]);
+    for(Producte a : productos) {
+        if(a != null) {
+        System.out.println(a.getNom());
+        return;
+        }
     }
   }
   
