@@ -8,27 +8,34 @@ public class Llista {
    
    public static void main(String[] args) {
     Menu();
-    MostraProducto();
    }
    public static void Menu() {
+        String choose;
+        do {
+        System.out.println("0.Salir");
         System.out.println("1.Crear Producto");
         System.out.println("2.Editar Producto");
         System.out.println("3.Vaciar Lista");
         System.out.println("4.Mostrar Productos");
         System.out.println("Elige que quieres hacer!");
-        String choose = entr.nextLine().strip();
-        if (choose.equals("1")) {
+        choose = entr.nextLine().strip();
+        
+        if (choose.equals("0")) {
+           return;
+        }
+        else if (choose.equals("1")) {
            crearProducto();
         }
-        if (choose.equals("2")) {
+        else if (choose.equals("2")) {
            editarProducto();
         } 
-        if (choose.equals("3")) {
+        else if (choose.equals("3")) {
            VaciarLista();
         }
-        if (choose.equals("4")) {
+        else if (choose.equals("4")) {
            MostraProducto();
-    }
+        }
+    }while(!choose.equals("0"));
    }
    private static void crearProducto() {
       System.out.println("Nombre del Producto: ");
@@ -75,19 +82,19 @@ public class Llista {
   
 
   public static void editarProducto() {
-    System.out.println("Nombre del Producto: ");
+    System.out.println("Nombre del Producto que quiere editar?: ");
+      String nombre = entr.nextLine().strip();
+
+      for(Producte a : productos) {
+          if(a.getNom().equals(nombre)) {
+            
+      System.out.println("Nombre del Producto: ");
       String nom = entr.nextLine().strip();
       if (nom.isBlank()) {
          System.out.println("Error: Introduzca minimo una letra o numero!");
          return;
       }
-
-      for(Producte a : productos) {
-          if(a.getNom().equals(nom)) {
-            System.out.println("Error: El Producto que quiere crear ja existe!");
-            return;
-          }
-      }
+      a.setNom(nombre);
 
       System.out.println("Categoria?");
       String categoria = entr.nextLine().strip();
@@ -111,16 +118,20 @@ public class Llista {
          System.out.println("Error: Introduzca una cantidad valida!");
          return;
       }
-      int cantidad = Integer.parseInt(Qt);
-      productos[0] = new Producte(nom, cantidad);
-      Categoria categoria1 = new Categoria(categoria);
+      a.setCantidad(qt);
+    }
+    else { System.out.println("El producto que quiere editar no existe!");}
   }
+}
 
   public static void VaciarLista() {
     System.out.println("Confirme la operacion!");
     String conf = entr.nextLine().strip();
     if(conf.equals("si")){
       productos = new Producte[0];
+      System.out.println("Llista borrada correctamente");
+      System.out.println(" ");
+
     }
     else {
       Menu();
@@ -130,11 +141,12 @@ public class Llista {
   public static void MostraProducto() {
     for(Producte a : productos) {
         if(a != null) {
-        System.out.println(a.getNom());
+        System.out.println("Nombre: " + a.getNom() + " Cantidad: " + a.getCantidad());
+         System.out.println(" ");
         return;
         }
     }
-  }
+}
   
   /*public static void MostrarProductoPorCategoria() {
     System.out.println("Di una categoria!");
