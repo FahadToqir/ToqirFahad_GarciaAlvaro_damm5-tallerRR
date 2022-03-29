@@ -77,6 +77,9 @@ public class Llista {
       int cantidad = Integer.parseInt(Qt);
       productos = Arrays.copyOf(productos, productos.length + 1);
       productos[productos.length - 1] = new Producte(nom,cantidad);
+
+      categorias = Arrays.copyOf(categorias, categorias.length + 1);
+      categorias[categorias.length - 1] = new Categoria(categoria);
       Menu();
   }
   
@@ -94,7 +97,7 @@ public class Llista {
          System.out.println("Error: Introduzca minimo una letra o numero!");
          return;
       }
-      a.setNom(nombre);
+      a.setNom(nom);
 
       System.out.println("Categoria?");
       String categoria = entr.nextLine().strip();
@@ -118,7 +121,8 @@ public class Llista {
          System.out.println("Error: Introduzca una cantidad valida!");
          return;
       }
-      a.setCantidad(qt);
+      int cantidad = Integer.parseInt(Qt);
+      a.setCantidad(cantidad);
     }
     else { System.out.println("El producto que quiere editar no existe!");}
   }
@@ -141,9 +145,9 @@ public class Llista {
   public static void MostraProducto() {
     for(Producte a : productos) {
         if(a != null) {
-        System.out.println("Nombre: " + a.getNom() + " Cantidad: " + a.getCantidad());
-         System.out.println(" ");
-        return;
+        System.out.println("Nombre: " + a.getNom() + /n " Cantidad: " + a.getCantidad());
+        System.out.println(" ");
+        continue;
         }
     }
 }
