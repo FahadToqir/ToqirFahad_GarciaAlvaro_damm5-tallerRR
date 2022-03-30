@@ -1,16 +1,16 @@
 /*Classe categoria del programa */
 public class Categoria {
-	private String nom;
+	private String nomCategoria;
         
         public Categoria(String nombre) {
-	     this.nom = nombre;
+	     this.nomCategoria = nombre;
         }
 		
-	public String getNom() {
-		return this.nom;
+	public String getNomCategoria() {
+		return this.nomCategoria;
 	}
-	public void setNom (String nombre) {
-		this.nom = nombre;
+	public void setNomCategoria (String nombre) {
+		this.nomCategoria = nombre;
 	}
 }
 	

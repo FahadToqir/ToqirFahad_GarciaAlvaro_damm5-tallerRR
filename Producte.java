@@ -1,10 +1,12 @@
 public class Producte {
   private String nom;
   private int cantidad;
+  private String categoria;
   
-  public Producte(String nombre,  int cantidad) {
+  public Producte(String nombre,  int cantidad, String categoria) {
         this.nom = nombre;
         this.cantidad = cantidad;
+        this.categoria = categoria;
   }
 
   public String getNom() {
@@ -21,6 +23,14 @@ public class Producte {
 
   public void setCantidad(int Cantidad) {
        this.cantidad = cantidad;
+  }
+
+  public String getCategoria() {
+         return this.categoria;
+  }
+
+  public void setCategoria(String categoria) {
+      this.categoria = categoria;
   }
 }
         

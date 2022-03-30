@@ -76,7 +76,7 @@ public class Llista {
       }
       int cantidad = Integer.parseInt(Qt);
       productos = Arrays.copyOf(productos, productos.length + 1);
-      productos[productos.length - 1] = new Producte(nom,cantidad);
+      productos[productos.length - 1] = new Producte(nom,cantidad,categoria);
 
       categorias = Arrays.copyOf(categorias, categorias.length + 1);
       categorias[categorias.length - 1] = new Categoria(categoria);
@@ -144,13 +144,19 @@ public class Llista {
  
   public static void MostraProducto() {
     for(Producte a : productos) {
-        if(a != null) {
-        System.out.println("Nombre: " + a.getNom() + /n " Cantidad: " + a.getCantidad());
-        System.out.println(" ");
-        continue;
-        }
+        if(a != null){
+               System.out.print("Nombre: " + a.getNom() + " Cantidad: " + a.getCantidad());
+               for(Categoria b : categorias) {
+                  if(b.getNomCategoria().equals(a.getCategoria())) {
+                    System.out.print(" Categoria: " + b.getNomCategoria());
+                    System.out.println(" ");}
+               continue;
+               }
+               
+       }
     }
-}
+    System.out.println(" ");       
+  }
   
   /*public static void MostrarProductoPorCategoria() {
     System.out.println("Di una categoria!");
