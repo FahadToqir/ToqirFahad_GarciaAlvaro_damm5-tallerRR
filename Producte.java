@@ -1,3 +1,4 @@
+//Aquest progama declara el Producte per despres poder afegir-lo a la Llista
 public class Producte {
   private String nom;
   private int cantidad;

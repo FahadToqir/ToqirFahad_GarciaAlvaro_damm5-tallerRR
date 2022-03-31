@@ -1,3 +1,5 @@
+//Aquest programa fa les diferents funcions de crear un producte, editar un producte, buidar la Llista i motrar els productes
+
 import java.util.Scanner;
 import java.util.Arrays;
 
@@ -11,19 +13,19 @@ public class Llista {
    }
    public static void Menu() {
         String choose;
-        do {
         System.out.println("0.Salir");
         System.out.println("1.Crear Producto");
         System.out.println("2.Editar Producto");
         System.out.println("3.Vaciar Lista");
         System.out.println("4.Mostrar Productos");
-        System.out.println("Elige que quieres hacer!");
+        System.out.println("5.Ver Productos por Categoria");
+        System.out.println("Elige que quieres hacer eligiendo el numero de la opcion!");
         choose = entr.nextLine().strip();
         
         if (choose.equals("0")) {
            return;
         }
-        else if (choose.equals("1")) {
+        if (choose.equals("1")) {
            crearProducto();
         }
         else if (choose.equals("2")) {
@@ -35,7 +37,9 @@ public class Llista {
         else if (choose.equals("4")) {
            MostraProducto();
         }
-    }while(!choose.equals("0"));
+        else if (choose.equals("5")) {
+           MostrarProductoPorCategoria();
+        }
    }
    private static void crearProducto() {
       System.out.println("Nombre del Producto: ");
@@ -86,10 +90,10 @@ public class Llista {
 
   public static void editarProducto() {
     System.out.println("Nombre del Producto que quiere editar?: ");
-      String nombre = entr.nextLine().strip();
+    String nombre = entr.nextLine().strip();
 
-      for(Producte a : productos) {
-          if(a.getNom().equals(nombre)) {
+    for(Producte a : productos) {
+       if(a.getNom().equals(nombre)) {
             
       System.out.println("Nombre del Producto: ");
       String nom = entr.nextLine().strip();
@@ -106,7 +110,6 @@ public class Llista {
          return;
       }
       
-
       System.out.println("Quantitat?");
       String Qt = entr.nextLine().strip();
       if(!UtilString.esEnter(Qt)) {
@@ -123,8 +126,13 @@ public class Llista {
       }
       int cantidad = Integer.parseInt(Qt);
       a.setCantidad(cantidad);
+      System.out.println("El Producto se ha editado correctamente!"); 
+      System.out.println(" ");
+      Menu();
     }
-    else { System.out.println("El producto que quiere editar no existe!");}
+    else { System.out.println("El producto que quiere editar no existe!"); 
+           System.out.println(" ");
+           Menu();}
   }
 }
 
@@ -145,23 +153,35 @@ public class Llista {
   public static void MostraProducto() {
     for(Producte a : productos) {
         if(a != null){
-               System.out.print("Nombre: " + a.getNom() + " Cantidad: " + a.getCantidad());
-               for(Categoria b : categorias) {
-                  if(b.getNomCategoria().equals(a.getCategoria())) {
+          System.out.print("Nombre: " + a.getNom() + " Cantidad: " + a.getCantidad());
+          for(Categoria b : categorias) {
+                   if(b.getNomCategoria().equals(a.getCategoria())) {
                     System.out.print(" Categoria: " + b.getNomCategoria());
                     System.out.println(" ");}
-               continue;
+                    continue;
                }
                
        }
     }
-    System.out.println(" ");       
+    System.out.println(" "); 
+    Menu();      
   }
   
-  /*public static void MostrarProductoPorCategoria() {
-    System.out.println("Di una categoria!");
-    
-  }*/
+  public static void MostrarProductoPorCategoria() {
+    System.out.println("Ponga una categoria creada!");
+    String categoria = entr.nextLine().strip();
+    for(Categoria b : categorias) {
+        if(b != null && b.getNomCategoria().equals(categoria)){            
+               for(Producte a : productos) {
+                  if(a != null && b.getNomCategoria().equals(a.getCategoria())) {
+                    System.out.print("Nombre: " + a.getNom() + " Cantidad: " + a.getCantidad());
+                    System.out.print(" Categoria: " + b.getNomCategoria());
+                    System.out.println(" ");
+                    continue;}
+                  }
+       }
+    }
+    System.out.println(" "); 
+    Menu();      
+  }
 }
-
- 
